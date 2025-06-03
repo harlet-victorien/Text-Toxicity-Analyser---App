@@ -10,11 +10,18 @@ A Streamlit-based web application that analyzes text content for toxic behavior 
 - **Batch Processing**: Analyze multiple texts from CSV files
 - **Visual Results**: Clear presentation of toxicity scores and classifications
 
+## model
 ![model](img/model.png)
+## model_status
 ![model_status](img/model_status.png)
+## inference
 ![inference](img/inference.png)
+## single_text
 ![single_text](img/single_text.png)
+## detailed_analysis
 ![detailed_analysis](img/detailed_analysis.png)
+## batch_analysis
 ![batch_analysis](img/batch_analysis.png)
+## chat_mode
 ![chat_mode](img/chat_mode.png)
 
