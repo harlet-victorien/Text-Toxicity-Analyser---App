@@ -20,18 +20,33 @@ def get_custom_css():
     """Return custom CSS for styling all columns automatically"""
     # First, you need to convert the local image to base64
     import base64
+    import os
     
     def get_base64_image(image_path):
-        with open(image_path, "rb") as img_file:
-            return base64.b64encode(img_file.read()).decode()
+        try:
+            if os.path.exists(image_path):
+                with open(image_path, "rb") as img_file:
+                    return base64.b64encode(img_file.read()).decode()
+            else:
+                return None
+        except Exception:
+            return None
     
     # Replace with your local image path
-    try:
-        base64_image = get_base64_image("assets/bg3.png")  # Put your image in assets folder
+    image_path = "assets/none.png"  # Put your image in assets folder
+    base64_image = get_base64_image(image_path)
+    
+    # Create background style based on whether image exists
+    if base64_image:
         background_image = f"data:image/png;base64,{base64_image}"
-    except FileNotFoundError:
-        # Fallback to the current online image
-        background_image = None
+        background_style = f"""
+            background-image: url("{background_image}");
+            background-size: cover;
+            background-position: center;
+        """
+    else:
+        background_style = ""
+
     
     return f"""
         <style>
@@ -39,10 +54,9 @@ def get_custom_css():
         header[data-testid="stHeader"] {{
             display: none !important;
         }}
-        /* Apply image to header background */
+        /* Apply background styling */
         .stApp > div {{
-            background-size: cover;
-            background-position: center;
+            {background_style}
             background-color: {COLORS['backgroundColor']};
             color: {COLORS['textColor']};
             font-family: {COLORS['font']};

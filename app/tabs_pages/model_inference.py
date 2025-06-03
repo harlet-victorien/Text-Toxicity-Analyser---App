@@ -148,8 +148,7 @@ def _single_text_analysis(classifier):
                         marker_color=colors,
                         text=[f'{s:.1%}' for s in scores],
                         textposition='auto',
-                        paper_bgcolor=COLORS['transparent'],
-                        plot_bgcolor=COLORS['transparent'],
+
                     )
                 ])
                 
@@ -158,6 +157,8 @@ def _single_text_analysis(classifier):
                     xaxis_title="Toxicity Categories",
                     yaxis_title="Probability Score",
                     yaxis=dict(range=[0, 1]),
+                    paper_bgcolor=COLORS['transparent'],
+                    plot_bgcolor=COLORS['transparent'],
                     height=400
                 )
                 

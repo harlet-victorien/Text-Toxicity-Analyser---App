@@ -457,7 +457,7 @@ class ToxicityClassifierInference:
                 self._load_from_pickle(model_path)
             
             self.is_loaded = True
-            print(f"Model loaded successfully from {model_path}")
+            # print(f"Model loaded successfully from {model_path}")
             
         except Exception as e:
             raise RuntimeError(f"Failed to load model from {model_path}: {e}")
